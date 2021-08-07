@@ -1,0 +1,16 @@
+<mat-card>
+  <form class="blog-input-form" [formGroup]="blogForm" (submit)="onSaveBlog()">
+    <h3>Blog title: </h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Please enter blog title: </mat-label>
+      <input matInput required placeholder="Example blog" class="blog-title-input" formControlName="title">
+    </mat-form-field>
+    <div></div>
+    <h3>Blog content: </h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Main Content</mat-label>
+      <textarea matInput required class="blog-content-input" formControlName="content"></textarea>
+    </mat-form-field>
+    <button mat-raised-button class=".r-align-btn" color="primary" >Submit</button>
+  </form>
+</mat-card>

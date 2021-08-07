@@ -1,5 +1,15 @@
+.placeholder{
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+.inner-placeholder{
+  flex: 1;
+}
 app-footer{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+ flex: auto;
+}
+app-header{
+  position:sticky;
+  top: 0px;
 }
