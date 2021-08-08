@@ -20,7 +20,6 @@ import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 
 import { FooterComponent } from './Footer/footer.component';
-import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './Auth/Login/login.component';
 import { RegisterComponent } from './Auth/Regsiteration/register.component';
 import { BlogCreateComponent } from './Blog/blog-create/blog-create.component';
@@ -30,6 +29,7 @@ import { AuthInterceptor } from './Auth/auth-interceptor';
 import { UserComponent } from './Auth/user/user.component';
 import { AdminComponent } from './Auth/admin/admin.component';
 import { BlogDisplayComponent } from './Blog/blog-display/blog-display.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({

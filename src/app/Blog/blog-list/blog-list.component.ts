@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/Auth/Login/login.service';
 import { BlogService } from '../blog.service';
 
 import { Blog } from '../blog.model';
 
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
+import { AuthService } from 'src/app/Auth/auth.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -14,7 +14,7 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class BlogListComponent implements OnInit {
 
-  constructor(private blogService:BlogService, private authService:LoginService){}
+  constructor(private blogService:BlogService, private authService:AuthService){}
 
   blogs:Blog[] = [];
   isLoading = false;

@@ -13,8 +13,6 @@ app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({extended: false}));
 app.use("/images", express.static(path.join("backend/images")));
 
-console.log(process.env.DBPASS);
-
 mongoose.connect("mongodb+srv://testDB:"+process.env.DBPASS+"@cluster0.jceaz.mongodb.net/card-game-forum?retryWrites=true&w=majority")
 .then(()=>{
   console.log("Connected to database");

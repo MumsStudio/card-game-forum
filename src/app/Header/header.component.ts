@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
-
-import { LoginService } from '../Auth/Login/login.service';
+import { AuthService } from '../Auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +9,7 @@ import { LoginService } from '../Auth/Login/login.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy{
-  constructor(private authService:LoginService){}
+  constructor(private authService:AuthService){}
   private authListener:Subscription | undefined;
   isLogin = false;
 

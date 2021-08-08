@@ -46,6 +46,7 @@ router.post("/login", (req, res,next)=>{
         message: "auth failed"
       });
     }
+    console.log(process.env.JWT_SECRTE);
     const token = jwt.sign({username:fetchedUser.username, userID: fetchedUser._id},process.env.JWT_SECRTE, {expiresIn: "1h"});
     res.status(200).json({
       token:token,
