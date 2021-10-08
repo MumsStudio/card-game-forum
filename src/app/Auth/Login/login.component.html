@@ -1,20 +1,22 @@
-<mat-card>
-  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+<div class="container">
+  <mat-card>
+    <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
 
-    <h2>Log In</h2>
-    <mat-form-field appearance="outline" >
-      <mat-label>Enter your username</mat-label>
-      <input  matInput ngModel required name="username" #username="ngModel" >
-    </mat-form-field>
+      <h2>Log In</h2>
+      <mat-form-field appearance="outline" >
+        <mat-label>Enter your username</mat-label>
+        <input  matInput ngModel required name="username" #username="ngModel" >
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Enter your password</mat-label>
-      <input matInput ngModel required name="password" [type]="hide_pass ? 'password' : 'text'" #password="ngModel" >
-      <button mat-icon-button matSuffix (click)="hide_pass = !hide_pass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_pass">
-        <mat-icon>{{hide_pass ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input matInput ngModel required name="password" [type]="hide_pass ? 'password' : 'text'" #password="ngModel" >
+        <button mat-icon-button matSuffix (click)="hide_pass = !hide_pass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_pass">
+          <mat-icon>{{hide_pass ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Login</button>
-  </form>
-</mat-card>
+      <button mat-raised-button color="primary" type="submit">Login</button>
+    </form>
+  </mat-card>
+</div>

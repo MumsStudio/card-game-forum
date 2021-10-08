@@ -6,7 +6,7 @@ import { Subject } from "rxjs";
 import {map} from 'rxjs/operators'
 import { environment } from "src/environments/environment";
 
-import { Blog } from "./blog.model";
+import {BlogEntry } from "./blog.model";
 
 const BackendURL = environment.apiURL+ "/blogs/"
 
@@ -14,8 +14,8 @@ const BackendURL = environment.apiURL+ "/blogs/"
 export class BlogService{
   constructor(private httpClient:HttpClient, private router:Router){}
 
-  private blogs:Blog[] = [];
-  private blogUpdated = new Subject<{blogs:Blog[], totalBlogs: number}>();
+  private blogs:BlogEntry[] = [];
+  private blogUpdated = new Subject<{blogs:BlogEntry[], totalBlogs: number}>();
 
   getBlogUpdatedListener(){
     return this.blogUpdated.asObservable();
@@ -41,11 +41,9 @@ export class BlogService{
     });
   }
 
-  addBlog(title:string, content:string){
-    const blogData = new FormData();
-    blogData.append("title", title);
-    blogData.append("content",content);
-    this.httpClient.post(BackendURL, blogData).subscribe(responseData=>{
+  addBlog(blog:BlogEntry){
+    console.log(blog);
+    this.httpClient.post(BackendURL, blog).subscribe(responseData=>{
       this.router.navigate(["/"]);
     });
   }

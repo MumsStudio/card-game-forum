@@ -18,6 +18,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
 
 import { FooterComponent } from './Footer/footer.component';
 import { LoginComponent } from './Auth/Login/login.component';
@@ -26,8 +27,6 @@ import { BlogCreateComponent } from './Blog/blog-create/blog-create.component';
 import { BlogListComponent } from './Blog/blog-list/blog-list.component';
 
 import { AuthInterceptor } from './Auth/auth-interceptor';
-import { UserComponent } from './Auth/user/user.component';
-import { AdminComponent } from './Auth/admin/admin.component';
 import { BlogDisplayComponent } from './Blog/blog-display/blog-display.component';
 import { HeaderComponent } from './header/header.component';
 
@@ -41,9 +40,7 @@ import { HeaderComponent } from './header/header.component';
     RegisterComponent,
     BlogCreateComponent,
     BlogListComponent,
-    UserComponent,
-    AdminComponent,
-    BlogDisplayComponent
+    BlogDisplayComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +59,8 @@ import { HeaderComponent } from './header/header.component';
     MatPaginatorModule,
     MatExpansionModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTableModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

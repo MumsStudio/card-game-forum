@@ -1,5 +1,7 @@
 <mat-toolbar color = "primary" class= "header-topnav">
   <span> <a routerLink = "">My App</a></span>
+  <!-- <a mat-button routerLink="/admin" routerLinkActive="mat-accent">Admin</a>
+  <a mat-button routerLink="/usersList" routerLinkActive="mat-accent">Users</a> -->
   <span class="spacer"></span>
   <ul class="nav-btn-container" *ngIf="!isLogin">
     <li><a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a></li>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../blog.service';
 
-import { Blog } from '../blog.model';
+import { BlogEntry } from '../blog.model';
 
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
@@ -16,7 +16,7 @@ export class BlogListComponent implements OnInit {
 
   constructor(private blogService:BlogService, private authService:AuthService){}
 
-  blogs:Blog[] = [];
+  blogs:BlogEntry[] = [];
   isLoading = false;
   userAuthenticated = false;
   userID!: string;
@@ -33,7 +33,7 @@ export class BlogListComponent implements OnInit {
     this.isLoading = true;
     this.blogService.getBlogs(this.blogPerPage, this.currentPage);
     this.userID = this.authService.getUserID() as string;
-    this.blogService.getBlogUpdatedListener().subscribe((data_retirved: {blogs:Blog[], totalBlogs:number})=>{
+    this.blogService.getBlogUpdatedListener().subscribe((data_retirved: {blogs:BlogEntry[], totalBlogs:number})=>{
       this.isLoading = false;
       this.blogs = data_retirved.blogs;
       this.totalBlogs = data_retirved.totalBlogs;

@@ -1,16 +1,53 @@
-<mat-card>
-  <form class="blog-input-form" [formGroup]="blogForm" (submit)="onSaveBlog()">
-    <h3>Blog title: </h3>
-    <mat-form-field appearance="fill">
-      <mat-label>Please enter blog title: </mat-label>
-      <input matInput required placeholder="Example blog" class="blog-title-input" formControlName="title">
-    </mat-form-field>
-    <div></div>
-    <h3>Blog content: </h3>
-    <mat-form-field appearance="fill">
-      <mat-label>Main Content</mat-label>
-      <textarea matInput required class="blog-content-input" formControlName="content"></textarea>
-    </mat-form-field>
-    <button mat-raised-button class=".r-align-btn" color="primary" >Submit</button>
-  </form>
-</mat-card>
+
+<form class="blog-input-form" [formGroup]="blogForm" (submit)="onSaveBlog()">
+  <mat-card class = "container">
+    <div style="width: 80%;">
+      <mat-card>
+        <mat-card-actions>
+          <button mat-button color="warn" (click)="filePicker.click()">
+            <mat-icon>cloud_upload</mat-icon>
+            <small>Upload Image</small>
+          </button>
+          <input type="file" #filePicker (change)="onFileUpload($event)" style="display: none;">
+        </mat-card-actions>
+        <div class="image-preview" *ngIf="imagePreview!=='' && imagePreview && blogForm.get('headerImage').valid">
+          <img [src]="imagePreview" [alt]="blogForm.value.title">
+        </div>
+      </mat-card>
+    </div>
+    <div style="width: 80%;">
+      <mat-card>
+        <mat-card-content>
+          <mat-form-field appearance="fill" class="content">
+            <mat-label>Please enter blog title: </mat-label>
+            <input matInput required placeholder="Example blog" formControlName="title">
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div style="width: 80%;">
+      <mat-card>
+        <mat-card-content>
+          <mat-form-field appearance="fill" class="content">
+            <mat-label>Description: </mat-label>
+            <textarea matInput formControlName="description" rows="10"></textarea>
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div style="width: 80%;">
+      <mat-card>
+        <mat-card-content>
+          <mat-form-field appearance="fill" class="content">
+            <mat-label>Main Content</mat-label>
+            <textarea matInput required formControlName="content" rows="40"></textarea>
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <button mat-raised-button color="primary" type="submit" [disabled] = "blogForm.invalid">Submit</button>
+  </mat-card>
+</form>
+

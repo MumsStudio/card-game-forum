@@ -1,12 +1,17 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
-<mat-grid-list cols="blogs.length" rowHeight="200px" [gutterSize]="'1rem'" *ngIf="blogs.length>0 && !isLoading">
-  <mat-grid-tile *ngFor="let blog of blogs">
-    <mat-card class="card-item">
-      <mat-card-header><h1>{{blog.title}}</h1></mat-card-header>
-      <mat-card-subtitle>Created: ***date***</mat-card-subtitle>
-      <mat-card-content>{{blog.content}}</mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
-<mat-paginator [length]="totalBlogs" [pageSize]="blogPerPage"  [pageSizeOptions]="pageSizeOptions" (page)="onChangePage($event)" *ngIf="blogs.length>0"></mat-paginator>
+<div class="container">
+  <div class="">
+    <mat-grid-list cols="blogs.length" rowHeight="200px" [gutterSize]="'1rem'" *ngIf="blogs.length>0 && !isLoading">
+      <mat-grid-tile *ngFor="let blog of blogs">
+        <mat-card class="card-item">
+          <mat-card-header><h1>{{blog.title}}</h1></mat-card-header>
+          <mat-card-subtitle>{{blog.createdAt}}</mat-card-subtitle>
+          <mat-card-content>{{ (blog.content.length>6)? (blog.content | slice:0:300)+'...':(blog.content)}}</mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <mat-paginator [length]="totalBlogs" [pageSize]="blogPerPage"  [pageSizeOptions]="pageSizeOptions" (page)="onChangePage($event)" *ngIf="blogs.length>0"></mat-paginator>
+</div>
+
 <p class = "info-text" *ngIf="blogs.length<=0 && !isLoading">No blog added yet</p>

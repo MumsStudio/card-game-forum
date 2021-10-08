@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core'
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 import {CustomValidator} from "./custom-validator";
@@ -12,19 +12,19 @@ import {CustomValidator} from "./custom-validator";
 
 export class RegisterComponent implements OnInit{
 
-  constructor(private authService:AuthService){}
+  constructor(private authService:AuthService, private formbuilder: FormBuilder){}
   hide_pass = true;
 
   registerForm:FormGroup;
 
   ngOnInit(){
-    this.registerForm = new FormGroup({
-      firstName: new FormControl(null),
-      lastName: new FormControl(null),
-      userName: new FormControl(null, {validators: [Validators.required, Validators.minLength(2)]}),
-      email: new FormControl(null),
-      password: new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
-      confirmPassword: new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]})
+    this.registerForm = this.formbuilder.group({
+      firstName: [null],
+      lastName: [null],
+      userName: [null, {validators: [Validators.required, Validators.minLength(2)]}],
+      email: [null],
+      password: [null, {validators: [Validators.required, Validators.minLength(3)]}],
+      confirmPassword: [null, {validators: [Validators.required, Validators.minLength(3)]}]
     },{validators:CustomValidator.isPasswordMatch});
   }
 
@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit{
     if (this.registerForm.invalid){
       return ;
     }
-    this.authService.signup(this.registerForm.value.username, this.registerForm.value.password);
+    this.authService.signup(this.registerForm.get("userName").value, this.registerForm.get("password").value);
   }
+
 }
